@@ -115,12 +115,14 @@ namespace ReadyPlayerMe
             var template = GetTemplate(templateTagOrId);
             var templateInstance = template != null ? Object.Instantiate(template) : null;
             templateInstance.transform.SetParent(parent, false);
+            templateInstance?.SetActive(false);
 
             return await LoadAsync(
                 response.Data.Id,
                 response.Data.Assets["baseModel"],
                 response.Data.GlbUrl,
-                templateInstance
+                templateInstance,
+                cancellationToken
             );
         }
         // End addition

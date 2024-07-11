@@ -102,6 +102,28 @@ namespace ReadyPlayerMe
                 cancellationToken
             );
         }
+        
+                
+        // Addition
+        public virtual async Task<CharacterData> LoadAsync(string id, string templateTagOrId, Transform parent)
+        {
+            var response = await _characterApi.FindByIdAsync(new CharacterFindByIdRequest()
+            {
+                Id = id,
+            });
+
+            var template = GetTemplate(templateTagOrId);
+            var templateInstance = template != null ? Object.Instantiate(template) : null;
+            templateInstance.transform.SetParent(parent, false);
+
+            return await LoadAsync(
+                response.Data.Id,
+                response.Data.Assets["baseModel"],
+                response.Data.GlbUrl,
+                templateInstance
+            );
+        }
+        // End addition
 
         public virtual async Task<CharacterData> LoadAsync(
             string id,

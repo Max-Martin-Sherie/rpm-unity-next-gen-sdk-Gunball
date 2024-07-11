@@ -105,7 +105,7 @@ namespace ReadyPlayerMe
         
                 
         // Addition
-        public virtual async Task<CharacterData> LoadAsync(string id, string templateTagOrId, Transform parent)
+        public virtual async Task<CharacterData> LoadAsync(string id, string templateTagOrId, Transform parent, CancellationToken cancellationToken = default)
         {
             var response = await _characterApi.FindByIdAsync(new CharacterFindByIdRequest()
             {

@@ -34,7 +34,7 @@ namespace ReadyPlayerMe
             foreach (Renderer renderer in renderers)
             {
                 if (!renderer.gameObject.TryGetComponent<TemplateAttachment>(out _))
-                    Object.Destroy(renderer.gameObject);
+                    Object.DestroyImmediate(renderer.gameObject);
             }
         }
 

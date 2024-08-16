@@ -24,7 +24,7 @@ namespace ReadyPlayerMe
             RemoveMeshes(target.transform);
             TransferMeshes(target.transform, source.transform, rootBone, bones);
 
-            Object.Destroy(source);
+            Object.DestroyImmediate(source);
         }
 
         /// Remove all meshes from the target armature
